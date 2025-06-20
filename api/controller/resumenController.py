@@ -3,7 +3,7 @@ from api.resumen.repository import ResumenRepository
 import json
 from api.resumen.model import Resumen
 from api.user.model import User 
-from flask_jwt_extended import jwt_required
+
 
 
 
@@ -44,7 +44,7 @@ class ResumenController(Resource):
         else:
             return {"Data":"No hay datos"}, 404
         
-    @jwt_required()
+    
     def post(self):
         data = parser.parse_args()
         

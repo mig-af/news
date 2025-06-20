@@ -4,7 +4,7 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 import os, datetime
 from flask_cors import CORS 
-from flask_jwt_extended import JWTManager
+
 
 app = Flask(__name__)
 
@@ -16,8 +16,6 @@ DB_INFO = os.environ.get("DATABASE_INFO")
 app.config['SQLALCHEMY_DATABASE_URI'] = DB_INFO
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 # configuracion jwt
-app.config["JWT_SECRET_KEY"] = SECRET_JWT
-app.config["JWT_ACCES_TOKEN_EXPIRES"] = datetime.timedelta(days=365)
 
 
 #cors
@@ -38,5 +36,5 @@ CORS(app, resources={
 # Inicializar extensiones
 db = SQLAlchemy(app)
 api = Api(app)
-jwt = JWTManager(app)
+
 migrate = Migrate(app, db)
