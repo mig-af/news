@@ -19,12 +19,12 @@ parser.add_argument('data', required=True, help='El campo data es obligatorio', 
 class ResumenController(Resource):
 
 
-    def get(self, date=None):
+    def get(self, data=None):
 
         
         
-        if(date != None):
-            resp = repository.find_by_date(date=date)
+        if(data != None):
+            resp = repository.find_by_date(date=data)
             
             if(resp):
                 print(type(resp))
@@ -46,7 +46,7 @@ class ResumenController(Resource):
         
     
     @jwt_req()
-    def post(self):
+    def post(self, data = None):
         data = parser.parse_args()
         
         print(type(data))
@@ -72,7 +72,17 @@ class ResumenController(Resource):
 
             return data, 400
 
+    @jwt_req()
+    def delete(self, data:int):
+        
+        if(Resumen.query.get(data)):
 
+            dlt = repository.delete(data)
+            print(dlt)
+            print(data)
+            return {}, 204
+        else:
+            return "Not found", 404
 
 
     

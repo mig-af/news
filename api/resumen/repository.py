@@ -18,9 +18,11 @@ class ResumenRepository:
         
         return 201
 
-    def delete(self):
-        pass
-
+    def delete(self, id:int):
+        resumen = Resumen.query.get(id)
+        db.session.delete(resumen)
+        db.session.commit()
+        return 204
 
     def find_by_date(self, date):
         

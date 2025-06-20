@@ -32,7 +32,11 @@ def verify_user(jwt_token):
     
 def jwt_req():
     def req_auth(func):
-        def wrapper(*args):
+        def wrapper(*args, **kwargs):
+
+            if(kwargs and request.method == "POST"):print(kwargs); return "NOT FOUND", 404
+
+
             resp = verify_user(request.headers.get("Authorization"))
             if( resp == True):
                 return func(*args)
