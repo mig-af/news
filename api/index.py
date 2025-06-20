@@ -8,5 +8,4 @@ api.add_resource(resumenController.ResumenController, "/api", "/api/<string:data
 
 app = app
 if __name__ == '__main__':
-    
     app.run(debug=True)

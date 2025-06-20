@@ -26,4 +26,4 @@ class ResumenRepository:
 
     def find_by_date(self, date):
         
-        return Resumen.query.filter(Resumen.fecha.like(f"%{date}%")).all()
+        return Resumen.query.filter(Resumen.fecha == date).all()
