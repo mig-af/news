@@ -3,7 +3,7 @@ from api.resumen.repository import ResumenRepository
 import json
 from api.resumen.model import Resumen
 from api.user.model import User 
-
+from api.security.jwt import jwt_req
 
 
 
@@ -45,6 +45,7 @@ class ResumenController(Resource):
             return {"Data":"No hay datos"}, 404
         
     
+    @jwt_req()
     def post(self):
         data = parser.parse_args()
         
