@@ -8,7 +8,7 @@ SECRET_JWT_KEY = os.environ.get("SECRET_JWT_KEY")
 
 def decode(jwt_token:str):
     try:
-
+        jwt_token = jwt_token.replace("Bearer ", "")
         resp = jwt.decode(jwt_token, SECRET_JWT_KEY, algorithms="HS256")
         return True, resp 
     except Exception as e:
@@ -33,7 +33,7 @@ def verify_user(jwt_token):
 def jwt_req():
     def req_auth(func):
         def wrapper(*args):
-            resp = verify_user(request.headers.get("Authorization").replace("Bearer ", ""))
+            resp = verify_user(request.headers.get("Authorization"))
             if( resp == True):
                 return func(*args)
             else:
