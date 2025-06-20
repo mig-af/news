@@ -39,7 +39,7 @@ def jwt_req():
 
             resp = verify_user(request.headers.get("Authorization"))
             if( resp == True):
-                return func(*args)
+                return func(*args, **kwargs)
             else:
                 print(resp)
                 return {"msg":"Unauthorized"}, 401
