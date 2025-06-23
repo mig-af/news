@@ -3,6 +3,7 @@ from api.resumen.repository import ResumenRepository
 import json
 from api.resumen.model import Resumen
 from api.user.model import User 
+from api.resumen.services import verify_datetime
 from api.security.jwt import jwt_req
 
 
@@ -23,7 +24,7 @@ class ResumenController(Resource):
 
         
         
-        if(data != None):
+        if(data != None and verify_datetime(data) ==  True):
             resp = repository.find_by_date(date=data)
             
             if(resp):
@@ -31,7 +32,8 @@ class ResumenController(Resource):
                 return [{"id":i.id, "cuerpo":i.cuerpo, "url":i.url} for i in resp], 200
             else:
                 return {"Data":"No hay datos"}, 404
-
+        else:
+            return {"Data": f"Invalid query: {data}"}, 404
 
 
 
