@@ -24,7 +24,9 @@ class ResumenController(Resource):
 
         
         
-        if(data != None and verify_datetime(data) ==  True):
+        if(data != None):
+            if(verify_datetime.verify(data) == False):return {"Data":f"Invalid query {data}"}, 404
+
             resp = repository.find_by_date(date=data)
             
             if(resp):
@@ -32,8 +34,7 @@ class ResumenController(Resource):
                 return [{"id":i.id, "cuerpo":i.cuerpo, "url":i.url} for i in resp], 200
             else:
                 return {"Data":"No hay datos"}, 404
-        else:
-            return {"Data": f"Invalid query: {data}"}, 404
+        
 
 
 
