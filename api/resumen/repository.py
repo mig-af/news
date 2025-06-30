@@ -1,5 +1,5 @@
 from api.resumen.model import Resumen 
-
+from sqlalchemy import func
 from api.init import db
 
 
