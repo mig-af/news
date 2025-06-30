@@ -20,7 +20,7 @@ parser.add_argument('data', required=True, help='El campo data es obligatorio', 
 class ResumenController(Resource):
 
 
-    @jwt_req()
+    
     def get(self, data=None):
 
         
