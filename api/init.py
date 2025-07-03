@@ -20,14 +20,14 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 #cors
 CORS(app, resources={
-    # r"/api/*": {
-    #     "origins": DOMAIN,
-    #     "methods": ["POST"],
-    #     "allow_headers": ["Authorization", "Content-Type"]
-    # },
+    r"/api/*": {
+        "origins": DOMAIN,
+        "methods": ["GET"],
+        "allow_headers": ["Authorization", "Content-Type"]
+    },
     r"/api/*":{
         "origins":"*",
-        "methods":["GET", "POST"],
+        "methods":["POST", "DELETE"],
 
     }
 })
