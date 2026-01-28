@@ -1,7 +1,7 @@
 # BoliNews 
 
-API backend que usa el sitio 
-- https://bolinews-gules.vercel.app
+API que usa el sitio 
+- https://noticias.zetita.online
 
 Que muestra el sitio?
 -
