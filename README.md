@@ -139,6 +139,7 @@ Con ese nombre de usuario y el algoritmo HS256 y tu frase secreta crea tu bearer
     Se creo un decorador manual para tener un mejor control del el sistema de autenticacion con pyJwt.  
     Se puede implementar mas reestricciones por ip, dominio, etc 
     Se uso  la capa gratuita de la plataforma aiven.io para alojar la base de datos en dicha plataforma
+    Se uso la capa gratuita de la API de gemini, esta puede cambiar sus limites de uso y consumo de tokens etc en cualquier momento, para verificar la funcionalidad en el sitio noticias.zetita.online puede buscar las noticias desde antes de diciembre 2025 
     
 
 ## Autor
